@@ -7,14 +7,13 @@ var helmet = require('helmet');
 var session = require('express-session');
 var passport = require('passport');
 var Strategy = require('passport-twitter').Strategy;
-var config = require('./config');
 var indexRouter = require('./routes/index');
 var gameRouter = require('./routes/game');
 
 passport.use(new Strategy({
-  consumerKey: process.env.consumerKey ? process.env.consumerKey : config.twitter.consumerKey,
-  consumerSecret: process.env.consumerSecret ? process.env.consumerSecret : config.twitter.consumerSecret,
-  callbackURL: process.env.ipAddress ? process.env.ipAddress + 'auth/twitter/callback' : config.twitter.callbackURL
+  consumerKey: process.env.consumerKey,
+  consumerSecret: process.env.consumerSecret,
+  callbackURL: process.env.ipAddress + 'auth/twitter/callback'
 },
   function (token, tokenSecret, profile, cb) {
     process.nextTick(function () {
