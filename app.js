@@ -14,7 +14,7 @@ var gameRouter = require('./routes/game');
 passport.use(new Strategy({
   consumerKey: process.env.consumerKey,
   consumerSecret: process.env.consumerSecret,
-  callbackURL: process.env.ipAddress + 'oauth/callback'
+  callbackURL: process.env.ipAddress ? process.env.ipAddress + 'oauth/callback' : 'http://localhost:8000/oauth_callback'
 },
   function (token, tokenSecret, profile, cb) {
     process.nextTick(function () {
