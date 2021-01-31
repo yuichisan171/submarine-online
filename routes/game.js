@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
     displayName = req.user.displayName;
     thumbUrl = req.user.photos[0].value;
   }
-  res.render('game', { title: '潜水艦ゲーム', displayName: displayName, thumbUrl: thumbUrl, ipAddress: process.env.ipAddress + 'auth/twitter/callback' });
+  res.render('game', { title: '潜水艦ゲーム', displayName: displayName, thumbUrl: thumbUrl, ipAddress: process.env.ipAddress });
 });
 
 module.exports = router;
