@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var config = require('../config');
 
 router.get('/', function (req, res, next) {
   let displayName = 'anonymous';
@@ -9,7 +8,7 @@ router.get('/', function (req, res, next) {
     displayName = req.user.displayName;
     thumbUrl = req.user.photos[0].value;
   }
-  res.render('game', { title: '潜水艦ゲーム', displayName: displayName, thumbUrl: thumbUrl, ipAddress: config.ipAddress });
+  res.render('game', { title: '潜水艦ゲーム', displayName: displayName, thumbUrl: thumbUrl, ipAddress: process.env.ipAddress });
 });
 
 module.exports = router;
